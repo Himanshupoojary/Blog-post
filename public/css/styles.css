@@ -14,3 +14,9 @@ main{
     justify-content: center;
     
 }
+
+footer{
+    display: block;
+    align-items: center;
+    justify-self: center;
+}
