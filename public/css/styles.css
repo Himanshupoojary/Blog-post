@@ -3,9 +3,11 @@ body{
     align-content: center;
     display: inline-flex;
     flex-direction: column;
+    align-items: center;
 }
 
 main{
+    margin:0 0 ;
     width: 80%;
     display: flex;
     align-items: center;
