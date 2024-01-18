@@ -32,3 +32,8 @@ footer{
 textarea {
     width: 200px;
 }
+
+
+.blog-title-index {
+    border: 4px solid rgb(14, 143, 249);
+}

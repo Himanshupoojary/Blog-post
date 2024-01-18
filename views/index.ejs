@@ -8,11 +8,14 @@
     <main  > 
     <section class="body-div">
         <div>
-            <% if(locals.blog_title){ %>
-                <h1>
-                    <% blog_title%>
-                </h1>
-
+            <br>
+            <h2> <u>Blogs</u></h2>
+            <br>        
+            <% if(locals.blog_titles){ %>
+                <% for (var i = 0; i < blog_titles.length; i++) { %>
+                    <div class="blog-title-index"><h3><%= blog_titles[i] %></h3></div>
+                  <% } %>
+                  <div class="blog-title-index"><h3><a href="/addblogs">Add More Blogs! now  </a></h3></div>
            <%  } else { %>
             <h2><a href="/addblogs">Add Your Blogs! now  </a>
            </h2> <%} %> 
