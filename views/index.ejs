@@ -8,12 +8,16 @@
     <main  > 
     <section class="body-div">
         <div>
-            <%=if(locals.blogs_data){%>
-                
+            <% if(locals.blog_title){ %>
+                <h1>
+                    <% blog_title%>
+                </h1>
 
-            }
+           <%  } else { %>
+            <h2><a href="/addblogs">Add Your Blogs! now  </a>
+           </h2> <%} %> 
             
-            %>
+            
         </div>
          <div class="blog-image"> <img  class="backimage" src="images/logo.png" onerror="alert(0)"> </div></section></main>
 </body>

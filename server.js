@@ -18,7 +18,10 @@ app.get("/contact",(req,res)=>{
 })
 
 app.get("/addblogs",(req,res)=>{
-    res.render('addblogs.ejs')})
+    res.render('addblogs.ejs'),{
+        blog_title:'sheela ki javani'
+
+    }})
 
 app.post("/addblogs",(req,res) => {
     console.log(req.body)
