@@ -1,0 +1,25 @@
+<%- include("partials/header.ejs") %>
+<link rel="stylesheet" href="/css/styles.css">
+    <main>
+        <sectin class="addblogs-form-container"> <h1> Add Your Blogs </h1><hr> 
+        <br>
+    <form action="/addblogs" method="post" >
+        <label for="Title">Title of the Blog:</label>
+        <input type="text" name="Title" required placeholder="Day in the life of a coder">
+        <br><br>
+        <br><br>
+        <label for="body">Whats its about :</label>
+        
+        <textarea name="Bodyblog" placeholder="It goes like ..." > </textarea>
+        <input type="submit" value="Submit">
+    </form>
+    <br>
+    <br>
+    <% if (locals.receive){%>
+        <h1>Your Blog has been added </h1>
+
+    <% }%>
+</sectin></main>
+    
+
+<%- include("partials/footer.ejs") %>

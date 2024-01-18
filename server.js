@@ -14,29 +14,15 @@ app.get("/",(req,res) => {
 })
 
 app.get("/contact",(req,res)=>{
-    res.sendFile(__dirname + '/public/contact.html',(err)=> {
-        if (err) {
-            console.log('Error')
-
-        }else {
-            console.log('passed')
-        }
-    })
+    res.render('contact.ejs')
 })
 
 app.get("/addblogs",(req,res)=>{
-    res.sendFile(__dirname + '/public/addblogs.html',(err)=> {
-        if (err) {
-            console.log('Error')
-
-        }else {
-            console.log('passed')
-        }
-    })
-})
+    res.render('addblogs.ejs')})
 
 app.post("/addblogs",(req,res) => {
     console.log(req.body)
+    res.render('addblogs.ejs',{receive:true})
     
 })
 

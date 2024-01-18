@@ -6,6 +6,15 @@
 </head>
 <body>
     <main  > 
-    <img  src="images/logo.png" onerror="alert(0)"></main>
+    <section class="body-div">
+        <div>
+            <%=if(locals.blogs_data){%>
+                
+
+            }
+            
+            %>
+        </div>
+         <div class="blog-image"> <img  class="backimage" src="images/logo.png" onerror="alert(0)"> </div></section></main>
 </body>
 <%- include("partials/footer.ejs") %>

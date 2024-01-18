@@ -12,6 +12,7 @@ main{
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
     
 }
 
@@ -19,4 +20,15 @@ footer{
     display: block;
     align-items: center;
     justify-self: center;
+    margin-bottom: 0;
+}
+
+.body-div{
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 2fr ;
+}
+
+textarea {
+    width: 200px;
 }
