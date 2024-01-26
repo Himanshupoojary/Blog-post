@@ -1,6 +1,9 @@
 import express from "express";
 import { fileURLToPath } from "url";
 import { dirname } from "path";
+import mongoose from "mongoose";
+
+
 
 
 const app = express() ;
@@ -34,5 +37,19 @@ app.listen(port,() => {
     console.log('Listening on port 5050')
 }
 )
+
+
+
+
+
+
+
+
+
+mongoose.connect("mongodb://127.0.0.1:27017/FruitsDB",() => {
+    console.log("connected ")
+})
+
+
 
 
