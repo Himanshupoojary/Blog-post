@@ -1,7 +1,8 @@
 import express from "express";
 import { fileURLToPath } from "url";
 import { dirname } from "path";
-import mongoose from "mongoose";
+import mongoose, { Schema, mongo } from "mongoose";
+import { strict } from "assert";
 
 
 
@@ -46,10 +47,82 @@ app.listen(port,() => {
 
 
 
-mongoose.connect("mongodb://127.0.0.1:27017/FruitsDB",() => {
-    console.log("connected ")
+// mongoose.connect('mongodb://127.0.0.1:27017/fruitsDB')
+
+
+// const FruitScema= new Schema({
+//     name:String,
+//     rating:Number,
+//     review:String
+// })
+
+// const Fruit = mongoose.model("Fruit", FruitScema);
+// const fruit1=new Fruit({
+//     name:"Apple",
+//     rating:9.9,
+//     review:"chummah"
+// })
+
+// fruit1.save();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// import mongoose from "mongoose";
+
+mongoose.connect("mongodb://127.0.0.1:27017/FruatsDB");
+
+const FruitScema = new Schema({
+    name:String ,
+    rating:Number,
+    price:Number
 })
 
 
+const Fruit = mongoose.model("Fruit",FruitScema);
+
+const fruit1= new Fruit({
+    name:"Banana",
+    rating:9.0,
+    price:45 
+})
+
+// fruit1.save()
 
 
+
+
+const PersonScema=new Schema({
+    name:String,
+    rel:String,
+    age:Number
+})
+
+
+const Person = mongoose.model("Poples",PersonScema);
+
+const p1 = new Person ({
+    name:"Ayaan",
+    rel:"No",
+    age:19
+});
+
+p1.save()
