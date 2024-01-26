@@ -119,10 +119,33 @@ const PersonScema=new Schema({
 
 const Person = mongoose.model("Poples",PersonScema);
 
-const p1 = new Person ({
-    name:"Ayaan",
+const p2 = new Person ({
+    name:"Macal",
     rel:"No",
-    age:19
+    age:40
+});
+const p3 = new Person ({
+    name:"ryan",
+    rel:"No",
+    age:39
+});
+const p4 = new Person ({
+    name:"Arhan",
+    rel:"No",
+    age:32
 });
 
-p1.save()
+// Person.insertMany([p4,p2,p3],{})
+
+
+
+// p1.save()
+
+// console.log(Person.find({name:"Ayaan"},(err)=>{}))
+const kit = await Person.find()
+mongoose.connection.close();
+console.log(kit.forEach(function(pople){
+    console.log(pople.name);
+    
+}));
+
