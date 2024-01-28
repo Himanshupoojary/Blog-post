@@ -99,13 +99,13 @@ const FruitScema = new Schema({
 
 const Fruit = mongoose.model("Fruit",FruitScema);
 
-const fruit1= new Fruit({
-    name:"Banana",
+const fruit3= new Fruit({
+    name:"litchi",
     rating:9.0,
     price:45 
 })
 
-// fruit1.save()
+fruit3.save()
 
 
 
@@ -116,47 +116,49 @@ const PersonScema=new Schema({
         required:true,
     },
     rel:String,
-    age:Number
+    age:Number,
+    fav:FruitScema
 })
 
 
 const Person = mongoose.model("Poples",PersonScema);
 
 const p1 = new Person ({
-   name:"mike",
+   name:"mikal",
     rel:"No",
-    age:40
+    age:40,
+    fav:fruit3
 });
-const p2 = new Person ({
-    name:"mike",
-    rel:"No",
-    age:40
-});
+// const p2 = new Person ({
+//     name:"mike",
+//     rel:"No",
+//     age:40
+// });
 
-const p3 = new Person ({
-    name:"mike",
-    rel:"No",
-    age:40
-});
+// const p3 = new Person ({
+//     name:"mike",
+//     rel:"No",
+//     age:40
+// });
 
 
-const p4 = new Person ({
-    name:"mike",
-    rel:"No",
-    age:40
-});
+// const p4 = new Person ({
+//     name:"mike",
+//     rel:"No",
+//     age:40
+// });
 
-const p5 = new Person ({
-    name:"mike",
-    rel:"No",
-    age:40
-});
+// const p5 = new Person ({
+//     name:"mike",
+//     rel:"No",
+//     age:40
+// });
 
 
 
 // Person.insertMany([p1,p2,p3,p4,p5])
 
-// p1.save()
+p1.save()
 
 // console.log(Person.find({name:"Ayaan"},(err)=>{}))
 const kit = await Person.find()
@@ -182,4 +184,20 @@ console.log(kit.forEach(function(pople){
 // res.upsertedCount; // Number indicating how many documents had to be upserted. Will either be 0 or 1.
 
 
-await Person.deleteMany({name:"mike"})
+// await Person.deleteMany({name:"mike"})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
