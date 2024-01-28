@@ -111,7 +111,10 @@ const fruit1= new Fruit({
 
 
 const PersonScema=new Schema({
-    name:String,
+    name:{
+        type:String,
+        required:true,
+    },
     rel:String,
     age:Number
 })
@@ -119,33 +122,41 @@ const PersonScema=new Schema({
 
 const Person = mongoose.model("Poples",PersonScema);
 
-const p2 = new Person ({
-    name:"Macal",
+const p8 = new Person ({
+   
     rel:"No",
     age:40
-});
-const p3 = new Person ({
-    name:"ryan",
-    rel:"No",
-    age:39
-});
-const p4 = new Person ({
-    name:"Arhan",
-    rel:"No",
-    age:32
 });
 
 // Person.insertMany([p4,p2,p3],{})
 
+// p8.save()
 
 
 // p1.save()
 
 // console.log(Person.find({name:"Ayaan"},(err)=>{}))
 const kit = await Person.find()
-mongoose.connection.close();
+// mongoose.connection.close();
 console.log(kit.forEach(function(pople){
     console.log(pople.name);
     
 }));
 
+
+
+// const name= await Person.updateOne({name:"Macal"}, {name:"lassun"})
+
+
+
+
+
+// const res = await Person.updateOne({_id:"65b3cb7bc5af7ef551ce8284" }, {name:"Lassun"});
+// res.matchedCount; // Number of documents matched
+// res.modifiedCount; // Number of documents modified
+// res.acknowledged; // Boolean indicating everything went smoothly.
+// res.upsertedId; // null or an id containing a document that had to be upserted.
+// res.upsertedCount; // Number indicating how many documents had to be upserted. Will either be 0 or 1.
+
+
+await Person.deleteOne({name:"Lassun"})
