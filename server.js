@@ -122,16 +122,39 @@ const PersonScema=new Schema({
 
 const Person = mongoose.model("Poples",PersonScema);
 
-const p8 = new Person ({
-   
+const p1 = new Person ({
+   name:"mike",
+    rel:"No",
+    age:40
+});
+const p2 = new Person ({
+    name:"mike",
     rel:"No",
     age:40
 });
 
-// Person.insertMany([p4,p2,p3],{})
+const p3 = new Person ({
+    name:"mike",
+    rel:"No",
+    age:40
+});
 
-// p8.save()
 
+const p4 = new Person ({
+    name:"mike",
+    rel:"No",
+    age:40
+});
+
+const p5 = new Person ({
+    name:"mike",
+    rel:"No",
+    age:40
+});
+
+
+
+// Person.insertMany([p1,p2,p3,p4,p5])
 
 // p1.save()
 
@@ -159,4 +182,4 @@ console.log(kit.forEach(function(pople){
 // res.upsertedCount; // Number indicating how many documents had to be upserted. Will either be 0 or 1.
 
 
-await Person.deleteOne({name:"Lassun"})
+await Person.deleteMany({name:"mike"})
