@@ -13,6 +13,13 @@ const port =process.env.PORT || 5050;
 app.use(express.static('public'));
 app.use(express.urlencoded({extended:true}))
 const __dirname = dirname(fileURLToPath(import.meta.url))
+const username = process.env.MONGODB_USERNAME
+const password = process.env.MONGODB_PASSWORD
+
+
+
+mongoose.connect(`mongodb+srv://${username}:${password}@cluster0.izhprbz.mongodb.net/registrationformDB`)
+
 
 app.get("/",(req,res) => {
     res.render('index.ejs',{blog_titles:titles})
@@ -36,6 +43,39 @@ app.post("/addblogs",(req,res) => {
 })
 
 
+const regscema=new mongoose.Schema({
+    name:String,
+    email:String,
+    password:String
+})
+
+const Registration = mongoose.model("Regsitration",regscema)
+
+app.get("/success",(req,res)=>{
+    res.sendFile(__dirname + "/views/success.html")
+})
+
+app.get("/register",(req,res)=>{
+    res.sendFile(__dirname+"/views/index.html")
+})
+
+app.post("/register",(req,res)=>{
+   try {
+    const {name1 , email1 , password1} = req.body
+    const RegistrationDat=new Registration( {
+        name:name1,
+        email:email1,
+        password:password1
+    })
+    // await RegistrationDat.save()
+    res.sendFile(__dirname +"/views/success.html")
+
+   } catch (error) {
+    res.sendFile(__dirname +"/views/error.html")
+    
+   }
+// res.redirect("/success")
+})
 
 
 
@@ -44,13 +84,6 @@ app.listen(port,() => {
     console.log('Listening on port 5050')
 }
 )
-
-
-
-
-
-
-
 
 
 // mongoose.connect('mongodb://127.0.0.1:27017/fruitsDB')
@@ -70,25 +103,6 @@ app.listen(port,() => {
 // })
 
 // fruit1.save();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -191,19 +205,7 @@ app.listen(port,() => {
 
 
 // await Person.deleteMany({name:"mike"})
-
-
-
-
-
-
-
-
-
-
-
-
-
+ 
 
 
 
