@@ -3,12 +3,13 @@ import { fileURLToPath } from "url";
 import { dirname } from "path";
 import mongoose, { Schema, mongo } from "mongoose";
 import { strict } from "assert";
+import bodyParser from "body-parser";
+import dotenv from "dotenv"
 
 
-
-
+dotenv.config()
 const app = express() ;
-const port =5050;
+const port =process.env.PORT || 5050;
 app.use(express.static('public'));
 app.use(express.urlencoded({extended:true}))
 const __dirname = dirname(fileURLToPath(import.meta.url))
@@ -33,6 +34,11 @@ app.post("/addblogs",(req,res) => {
     titles.push(req.body.Title)
     
 })
+
+
+
+
+
 
 app.listen(port,() => {
     console.log('Listening on port 5050')
@@ -86,87 +92,87 @@ app.listen(port,() => {
 
 
 
-// import mongoose from "mongoose";
+// // import mongoose from "mongoose";
 
-mongoose.connect("mongodb://127.0.0.1:27017/FruatsDB");
+// mongoose.connect("mongodb://127.0.0.1:27017/FruatsDB");
 
-const FruitScema = new Schema({
-    name:String ,
-    rating:Number,
-    price:Number
-})
-
-
-const Fruit = mongoose.model("Fruit",FruitScema);
-
-const fruit3= new Fruit({
-    name:"litchi",
-    rating:9.0,
-    price:45 
-})
-
-fruit3.save()
+// const FruitScema = new Schema({
+//     name:String ,
+//     rating:Number,
+//     price:Number
+// })
 
 
+// const Fruit = mongoose.model("Fruit",FruitScema);
+
+// const fruit3= new Fruit({
+//     name:"litchi",
+//     rating:9.0,
+//     price:45 
+// })
+
+// fruit3.save()
 
 
-const PersonScema=new Schema({
-    name:{
-        type:String,
-        required:true,
-    },
-    rel:String,
-    age:Number,
-    fav:FruitScema
-})
 
 
-const Person = mongoose.model("Poples",PersonScema);
+// const PersonScema=new Schema({
+//     name:{
+//         type:String,
+//         required:true,
+//     },
+//     rel:String,
+//     age:Number,
+//     fav:FruitScema
+// })
 
-const p1 = new Person ({
-   name:"mikal",
-    rel:"No",
-    age:40,
-    fav:fruit3
-});
-// const p2 = new Person ({
-//     name:"mike",
+
+// const Person = mongoose.model("Poples",PersonScema);
+
+// const p1 = new Person ({
+//    name:"mikal",
 //     rel:"No",
-//     age:40
+//     age:40,
+//     fav:fruit3
 // });
+// // const p2 = new Person ({
+// //     name:"mike",
+// //     rel:"No",
+// //     age:40
+// // });
 
-// const p3 = new Person ({
-//     name:"mike",
-//     rel:"No",
-//     age:40
-// });
-
-
-// const p4 = new Person ({
-//     name:"mike",
-//     rel:"No",
-//     age:40
-// });
-
-// const p5 = new Person ({
-//     name:"mike",
-//     rel:"No",
-//     age:40
-// });
+// // const p3 = new Person ({
+// //     name:"mike",
+// //     rel:"No",
+// //     age:40
+// // });
 
 
+// // const p4 = new Person ({
+// //     name:"mike",
+// //     rel:"No",
+// //     age:40
+// // });
 
-// Person.insertMany([p1,p2,p3,p4,p5])
+// // const p5 = new Person ({
+// //     name:"mike",
+// //     rel:"No",
+// //     age:40
+// // });
 
-p1.save()
 
-// console.log(Person.find({name:"Ayaan"},(err)=>{}))
-const kit = await Person.find()
-// mongoose.connection.close();
-console.log(kit.forEach(function(pople){
-    console.log(pople.name);
+
+// // Person.insertMany([p1,p2,p3,p4,p5])
+
+// p1.save()
+
+// // console.log(Person.find({name:"Ayaan"},(err)=>{}))
+// const kit = await Person.find()
+// // mongoose.connection.close();
+// console.log(kit.forEach(function(pople){
+//     console.log(pople.name);
     
-}));
+// }));
 
 
 
@@ -185,6 +191,9 @@ console.log(kit.forEach(function(pople){
 
 
 // await Person.deleteMany({name:"mike"})
+
+
+
 
 
 
