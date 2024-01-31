@@ -5,14 +5,18 @@ import mongoose, { Schema, mongo } from "mongoose";
 import { strict } from "assert";
 import bodyParser from "body-parser";
 import dotenv from "dotenv"
+import pkg from 'body-parser';
 
 
+
+const { json } = pkg;
 dotenv.config()
 const app = express() ;
-const port =process.env.PORT || 5050;
+const port =process.env.PORT || 5000;
 app.use(express.static('public'));
 app.use(express.urlencoded({extended:true}))
 const __dirname = dirname(fileURLToPath(import.meta.url))
+app.use(bodyParser.json())
 const username = process.env.MONGODB_USERNAME
 const password = process.env.MONGODB_PASSWORD
 
@@ -59,17 +63,25 @@ app.get("/register",(req,res)=>{
     res.sendFile(__dirname+"/views/index.html")
 })
 
-app.post("/register",(req,res)=>{
+app.post("/register",async (req,res)=>{
    try {
     const {name1 , email1 , password1} = req.body
-    const RegistrationDat=new Registration( {
+
+    const existinguser= await Registration.findOne({email1})
+
+    if (!existinguser){
+        const RegistrationDat=new Registration( {
         name:name1,
         email:email1,
         password:password1
     })
-    // await RegistrationDat.save()
-    res.sendFile(__dirname +"/views/success.html")
+        await RegistrationDat.save()
+        res.sendFile(__dirname +"/views/success.html")
 
+    }else {
+        res.sendFile(__dirname+"/views/error.html")
+    }
+    
    } catch (error) {
     res.sendFile(__dirname +"/views/error.html")
     
@@ -77,7 +89,7 @@ app.post("/register",(req,res)=>{
 // res.redirect("/success")
 })
 
-
+mongoose.connection.close()
 
 
 app.listen(port,() => {
@@ -180,9 +192,9 @@ app.listen(port,() => {
 
 // p1.save()
 
-// // console.log(Person.find({name:"Ayaan"},(err)=>{}))
+// console.log(Person.find({name:"Ayaan"},(err)=>{}))
 // const kit = await Person.find()
-// // mongoose.connection.close();
+// mongoose.connection.close();
 // console.log(kit.forEach(function(pople){
 //     console.log(pople.name);
     
