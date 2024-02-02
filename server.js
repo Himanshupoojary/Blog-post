@@ -67,9 +67,9 @@ app.post("/register",async (req,res)=>{
    try {
     const {name1 , email1 , password1} = req.body
 
-    const existinguser= await Registration.findOne({email1})
+    const existinguser=await Registration.findOne({email1})
 
-    if (!existinguser){
+    if ( existinguser){
         const RegistrationDat=new Registration( {
         name:name1,
         email:email1,
@@ -89,11 +89,11 @@ app.post("/register",async (req,res)=>{
 // res.redirect("/success")
 })
 
-mongoose.connection.close()
+// mongoose.connection.close()
 
 
 app.listen(port,() => {
-    console.log('Listening on port 5050')
+    console.log(`Listening on port ${port}`)
 }
 )
 
