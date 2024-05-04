@@ -22,7 +22,7 @@ const password = process.env.MONGODB_PASSWORD
 
 
 
-mongoose.connect(`mongodb+srv://${username}:${password}@cluster0.izhprbz.mongodb.net/registrationformDB`)
+mongoose.connect(`mongodb+srv://${username}:${password}@suckdeeznuts.izhprbz.mongodb.net/registrationformDB`)
 
 
 app.get("/",(req,res) => {
@@ -109,10 +109,10 @@ app.listen(port,() => {
 
 // const Fruit = mongoose.model("Fruit", FruitScema);
 // const fruit1=new Fruit({
-//     name:"Apple",
+//     name:"Apple",ss
 //     rating:9.9,
 //     review:"chummah"
-// })
+// })ss
 
 // fruit1.save();
 

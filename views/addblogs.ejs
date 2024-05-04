@@ -1,15 +1,16 @@
 <%- include("partials/header.ejs") %>
 <link rel="stylesheet" href="/css/styles.css">
-    <main>
+<form action="/addblogs" method="post" >    
+<main>
         <sectin class="addblogs-form-container"> <h1> Add Your Blogs </h1><hr> 
         <br>
-    <form action="/addblogs" method="post" >
-        <label for="Title">Title of the Blog:</label>
-        <input type="text" name="Title" required placeholder="Day in the life of a coder">
-        <br><br>
+        
+        <label for="Title"></label>
+        <input type="text" name="Title" required placeholder="<Title>">
+        <br><br></form>
         <br><br>
         <label for="body">Whats </label>
-        
+       
         <textarea name="Bodyblog" placeholder="It goes like ..." > </textarea>
         <input type="submit" value="Submit">
     </form>

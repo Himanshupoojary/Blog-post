@@ -37,3 +37,7 @@ textarea {
 .blog-title-index {
     border: 4px solid rgb(14, 143, 249);
 }
+
+input {
+    border: none;
+}
